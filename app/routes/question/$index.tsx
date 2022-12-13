@@ -5,8 +5,11 @@ import { Form, useLoaderData } from "@remix-run/react";
 import { getQuestion, setPoints } from "../../api/qa_api";
 import type { Question } from "../../model/QA_data";
 
+// Since we are using a DB, I'll use the URL to save state: points
+
 // This is the loader function. It runs on the server and returns the data to the client. Similar to getServerSideProps in Next.js
 export async function loader({ request, params }: LoaderArgs) {
+  // Getting the query parameters from the URL (in this case the points)
   const url = new URL(request.url);
   const pointsParam = url.searchParams.get("points");
   const points = pointsParam ? parseInt(pointsParam) : 0;
@@ -28,6 +31,7 @@ export async function loader({ request, params }: LoaderArgs) {
   return json({ question });
 }
 
+// This function runs on the server and handles mutations (in this case the form submission)
 export async function action({ request, params }: ActionArgs) {
   const url = new URL(request.url);
   const pointsParam = url.searchParams.get("points");
@@ -41,15 +45,13 @@ export async function action({ request, params }: ActionArgs) {
 
   const form = await request.formData();
   const formAnswer = form.get("answer");
-  console.log("formAnswer", formAnswer);
 
   const newPoints = formAnswer ? parseInt(formAnswer.toString()) : 0;
-
-  console.log("newPoints", newPoints + "   " + typeof newPoints);
 
   // Would send a post request to the API to save the points here
   setPoints(newPoints);
 
+  // Since we are using a DB, I'll use the URL to save state: points
   return redirect(`/question/${number + 1}?points=${points + newPoints}`);
 }
 
