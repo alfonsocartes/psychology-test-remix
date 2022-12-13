@@ -26,7 +26,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="mx-auto max-w-7xl bg-white dark:bg-zinc-900">
+      <body className="mx-auto max-w-7xl bg-white dark:bg-zinc-900 dark:text-white">
         <Outlet />
         <ScrollRestoration />
         <Scripts />
