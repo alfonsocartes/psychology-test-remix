@@ -36,7 +36,7 @@ export default function Result() {
     <div className="space-y-6 flex flex-col">
       <h1 className="text-3xl font-bold">Result</h1>
       <h4 className="text-lg">Are you an introvert or an extrovert?</h4>
-      <p className="font-bold bg-blue-500 rounded-xl p-8">
+      <p className="font-bold bg-yellow-500 text-white rounded-xl p-8">
         {loaderData.resultText}
       </p>
       <Link to="/question/0">

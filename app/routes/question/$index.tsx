@@ -61,7 +61,7 @@ export default function Questions() {
   const question: Question = loaderData.question;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 flex flex-col">
       <p>{question.text}</p>
       <ul className="space-y-3">
         {question.answers.map((answer, index) => (
@@ -70,7 +70,7 @@ export default function Questions() {
               <input type="hidden" name="answer" value={answer.points} />
               <button
                 type="submit"
-                className="bg-zinc-500 px-4 py-2 rounded-lg shadow shadow-zinc-500 hover:shadow-lg hover:bg-zinc-600 text-white"
+                className="bg-zinc-500 px-4 py-2 rounded-lg shadow shadow-zinc-300 hover:shadow-lg hover:bg-zinc-600 text-white"
               >
                 {answer.text}
               </button>
