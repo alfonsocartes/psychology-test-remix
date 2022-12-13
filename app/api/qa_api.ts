@@ -1,5 +1,5 @@
-import type { Question } from "~/model/QA_data";
-import { QUESTIONS_DATA } from "~/model/QA_data";
+import type { Question } from "../model/QA_data";
+import { QUESTIONS_DATA } from "../model/QA_data";
 
 export function getQuestion(index: number): Question | null {
   // this would fetch the question from a DB or API
